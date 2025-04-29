@@ -1,5 +1,6 @@
 package com.example.training.schedule;
 
+import com.example.training.group.dto.GroupResponse;
 import com.example.training.schedule.dto.ScheduleRequest;
 import com.example.training.schedule.dto.ScheduleResponse;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,12 @@ public class ScheduleServiceImpl implements ScheduleService{
 
         schedules.forEach(schedule -> {
             var dto = scheduleMapper.toDto(schedule);
+
+            dto.setGroupId(schedule.getGroup().getId());
+            var s = new GroupResponse();
+            s.setId(schedule.getGroup().getId());
+            s.setGroupName(schedule.getGroup().getGroupName());
+            dto.setGroupResponse(s);
             list.add(dto);
         });
         return list;

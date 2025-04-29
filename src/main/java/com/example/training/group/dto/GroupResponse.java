@@ -1,5 +1,7 @@
 package com.example.training.group.dto;
 
+import com.example.training.price.dto.PriceResponse;
+import com.example.training.schedule.dto.ScheduleResponse;
 import com.example.training.teacher.dto.TeacherResponse;
 import lombok.Data;
 
@@ -13,6 +15,6 @@ public class GroupResponse {
     private String groupName;
 
     private List<TeacherResponse> teachers;
-    private List<TeacherResponse> prices;
-    private List<TeacherResponse> schedules;
+    private List<PriceResponse> prices;
+    private List<ScheduleResponse> schedules;
 }

@@ -2,6 +2,12 @@ package com.example.training.group;
 
 import com.example.training.group.dto.GroupRequest;
 import com.example.training.group.dto.GroupResponse;
+import com.example.training.price.PriceRepository;
+import com.example.training.price.dto.PriceResponse;
+import com.example.training.schedule.ScheduleRepository;
+import com.example.training.schedule.dto.ScheduleResponse;
+import com.example.training.teacher.TeacherRepository;
+import com.example.training.teacher.dto.TeacherResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,9 +19,15 @@ public class GroupServiceImpl implements GroupService {
 
     private final GroupRepository groupRepository;
     private final GroupMapper groupMapper;
-    public GroupServiceImpl(GroupRepository groupRepository, GroupMapper groupMapper) {
+    private final TeacherRepository teacherRepository;
+    private final PriceRepository priceRepository;
+    private final ScheduleRepository scheduleRepository;
+    public GroupServiceImpl(GroupRepository groupRepository, GroupMapper groupMapper, TeacherRepository teacherRepository, PriceRepository priceRepository, ScheduleRepository scheduleRepository) {
         this.groupRepository = groupRepository;
         this.groupMapper = groupMapper;
+        this.teacherRepository = teacherRepository;
+        this.priceRepository = priceRepository;
+        this.scheduleRepository = scheduleRepository;
     }
 
     @Override
@@ -34,6 +46,36 @@ public class GroupServiceImpl implements GroupService {
         groups.forEach(group -> {
             var dto = groupMapper.toDto(group);
 
+            var teachers = teacherRepository.findAllByGroupId(group.getId());
+            List<TeacherResponse> tlist = new ArrayList<>();
+            if(teachers!=null) {
+                teachers.forEach(tt -> {
+                    var t = groupMapper.toResponse(tt);
+                    tlist.add(t);
+                });
+            }
+                var prices = priceRepository.findAllByGroupId(group.getId());
+                List<PriceResponse> plist = new ArrayList<>();
+                if(prices!=null) {
+                    prices.forEach(pp -> {
+                        var p = groupMapper.toRes(pp);
+                        plist.add(p);
+                    });
+                }
+
+                    var schedules = scheduleRepository.findAllByGroupId(group.getId());
+                    List<ScheduleResponse> slist = new ArrayList<>();
+                    if(schedules!=null){
+                        schedules.forEach(ss -> {
+                            var s = groupMapper.toResp(ss);
+                            slist.add(s);
+                        });
+                    }
+
+
+            dto.setTeachers(tlist);
+            dto.setSchedules(slist);
+            dto.setPrices(plist);
             list.add(dto);
         });
         return list;

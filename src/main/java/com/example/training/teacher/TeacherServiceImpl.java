@@ -1,5 +1,6 @@
 package com.example.training.teacher;
 
+import com.example.training.group.dto.GroupResponse;
 import com.example.training.teacher.dto.TeacherRequest;
 import com.example.training.teacher.dto.TeacherResponse;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,12 @@ public class TeacherServiceImpl implements TeacherService{
 
         teachers.forEach(teacher -> {
             var dto = teacherMapper.toDto(teacher);
+
+            dto.setGroupId(teacher.getGroup().getId());
+            var t = new GroupResponse();
+            t.setId(teacher.getGroup().getId());
+            t.setGroupName(teacher.getGroup().getGroupName());
+            dto.setGroupResponse(t);
             list.add(dto);
         });
         return list;

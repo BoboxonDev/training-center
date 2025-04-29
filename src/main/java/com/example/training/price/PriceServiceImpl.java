@@ -1,5 +1,6 @@
 package com.example.training.price;
 
+import com.example.training.group.dto.GroupResponse;
 import com.example.training.price.dto.PriceRequest;
 import com.example.training.price.dto.PriceResponse;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,13 @@ public class PriceServiceImpl implements PriceService{
 
         prices.forEach(price -> {
             var dto = priceMapper.toDto(price);
+
+            dto.setGroupId(price.getGroup().getId());
+            var p = new GroupResponse();
+            p.setId(price.getGroup().getId());
+            p.setGroupName(price.getGroup().getGroupName());
+            dto.setGroupResponse(p);
+
             list.add(dto);
         });
         return list;
