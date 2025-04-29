@@ -12,5 +12,5 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity,Long> {
 
     @Query("select s from TeacherEntity as s where s.group.id in :groupId")
     List<TeacherEntity> findAllByGroupId(Long groupId);
-    List<TeacherEntity> findAllByDeleteAtIsNull();
+    List<TeacherEntity> findAllByDeletedAtIsNull();
 }

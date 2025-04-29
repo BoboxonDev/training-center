@@ -12,5 +12,5 @@ public interface ScheduleRepository extends JpaRepository<ScheduleEntity, Long> 
 
     @Query("select s from ScheduleEntity as s where s.group.id in :groupId")
     List<ScheduleEntity> findAllByGroupId(Long groupId);
-    List<ScheduleEntity> findAllByDeleteAtIsNull();
+    List<ScheduleEntity> findAllByDeletedAtIsNull();
 }

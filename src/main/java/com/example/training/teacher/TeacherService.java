@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TeacherService {
 
-    void create(TeacherRequest request);
+    void    create(TeacherRequest request);
 
     List<TeacherResponse> getAll();
 

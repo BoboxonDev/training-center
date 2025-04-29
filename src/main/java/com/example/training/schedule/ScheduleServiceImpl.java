@@ -28,7 +28,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Override
     public List<ScheduleResponse> getAll() {
-        var schedules = scheduleRepository.findAllByDeleteAtIsNull();
+        var schedules = scheduleRepository.findAllByDeletedAtIsNull();
         List<ScheduleResponse> list = new ArrayList<>();
 
         schedules.forEach(schedule -> {

@@ -29,7 +29,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public List<TeacherResponse> getAll() {
-        var teachers = teacherRepository.findAllByDeleteAtIsNull();
+        var teachers = teacherRepository.findAllByDeletedAtIsNull();
         List<TeacherResponse> list = new ArrayList<>();
 
         teachers.forEach(teacher -> {
@@ -47,9 +47,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public TeacherResponse getById(Long id) {
-        var entity  = teacherRepository.findById(id).orElseThrow();
-        var dto = teacherMapper.toDto(entity);
-        return dto;
+        return null;
     }
 
     @Override
@@ -59,22 +57,11 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public TeacherResponse updateTeacher(Long id, TeacherRequest request) {
-        var entity = teacherRepository.findById(id).orElseThrow();
-        entity.setFullName(request.getFullName());
-        entity.setSubject(request.getSubject());
-        entity.setExperience(request.getExperience());
-
-        var updateEntity = teacherRepository.save(entity);
-        var dto  = teacherMapper.toDto(updateEntity);
-        return dto;
+        return null;
     }
 
     @Override
     public TeacherResponse deleteTeacherById(Long id) {
-        var entity = teacherRepository.findById(id).orElseThrow();
-        entity.setDeletedAt(LocalDateTime.now());
-        var dto = teacherMapper.toDto(entity);
-        teacherRepository.save(entity);
-        return dto;
+        return null;
     }
 }

@@ -12,5 +12,5 @@ public interface PriceRepository extends JpaRepository<PriceEntity, Long> {
     @Query("select s from PriceEntity as s where s.group.id in :groupId")
     List<PriceEntity> findAllByGroupId(Long groupId);
 
-    List<PriceEntity> findAllByDeleteAtIsNull();
+    List<PriceEntity> findAllByDeletedAtIsNull();
 }

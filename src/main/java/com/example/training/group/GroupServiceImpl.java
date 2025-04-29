@@ -40,7 +40,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupResponse> getAll() {
-        var groups = groupRepository.findAllByDeleteAtIsNull();
+        var groups = groupRepository.findAllByDeletedAtIsNull();
         List<GroupResponse> list = new ArrayList<>();
 
         groups.forEach(group -> {

@@ -30,7 +30,7 @@ public class PriceServiceImpl implements PriceService{
 
     @Override
     public List<PriceResponse> getAll() {
-        var prices = priceRepository.findAllByDeleteAtIsNull();
+        var prices = priceRepository.findAllByDeletedAtIsNull();
         List<PriceResponse> list = new ArrayList<>();
 
         prices.forEach(price -> {
