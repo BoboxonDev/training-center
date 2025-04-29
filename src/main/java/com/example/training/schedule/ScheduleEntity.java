@@ -1,6 +1,7 @@
 package com.example.training.schedule;
 
 
+import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -35,4 +36,9 @@ public class ScheduleEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
+
+
+    @OneToOne
+    @JoinColumn(name = "group_id")
+    private GroupEntity group;
 }

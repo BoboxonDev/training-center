@@ -1,5 +1,6 @@
 package com.example.training.price;
 
+import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +24,12 @@ public class PriceEntity {
 
     }
 
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private LocalDateTime daletedAt;
+    private LocalDateTime deletedAt;
+
+
+    @OneToOne
+    @JoinColumn(name = "group_id")
+    private GroupEntity group;
 }

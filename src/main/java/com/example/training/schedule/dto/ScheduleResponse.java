@@ -1,7 +1,9 @@
 package com.example.training.schedule.dto;
 
+import com.example.training.group.dto.GroupResponse;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.DayOfWeek;
@@ -19,4 +21,10 @@ public class ScheduleResponse {
     private LocalTime startTime;
 
     private LocalTime enTime;
+
+
+    @NotNull
+    private Long groupId;
+
+    private GroupResponse groupResponse;
 }

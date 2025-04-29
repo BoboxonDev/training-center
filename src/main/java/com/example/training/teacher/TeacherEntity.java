@@ -1,5 +1,6 @@
 package com.example.training.teacher;
 
+import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +29,12 @@ public class TeacherEntity {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
+
+
+
+    @OneToOne
+    @JoinColumn(name = "group_id")
+    private GroupEntity group;
 
     public TeacherEntity() {
 

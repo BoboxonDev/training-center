@@ -1,5 +1,7 @@
 package com.example.training.teacher.dto;
 
+import com.example.training.group.dto.GroupResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -10,4 +12,9 @@ public class TeacherRequest {
     private String subject;
 
     private Integer experience;
+
+    @NotNull
+    private Long groupId;
+
+
 }
