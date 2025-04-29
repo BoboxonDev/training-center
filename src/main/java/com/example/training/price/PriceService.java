@@ -1,6 +1,5 @@
 package com.example.training.price;
 
-import com.example.training.group.dto.GroupResponse;
 import com.example.training.price.dto.PriceRequest;
 import com.example.training.price.dto.PriceResponse;
 
@@ -12,7 +11,7 @@ public interface PriceService {
 
     List<PriceResponse> getAll();
 
-    GroupResponse getById(Long id);
+    PriceResponse getById(Long id);
 
     void updatePrice(PriceRequest id);
 
