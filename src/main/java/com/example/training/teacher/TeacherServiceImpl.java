@@ -40,7 +40,9 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public TeacherResponse getById(Long id) {
-        return null;
+        var entity  = teacherRepository.findById(id).orElseThrow();
+        var dto = teacherMapper.toDto(entity);
+        return dto;
     }
 
     @Override
@@ -50,11 +52,22 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public TeacherResponse updateTeacher(Long id, TeacherRequest request) {
-        return null;
+        var entity = teacherRepository.findById(id).orElseThrow();
+        entity.setFullName(request.getFullName());
+        entity.setSubject(request.getSubject());
+        entity.setExperience(request.getExperience());
+
+        var updateEntity = teacherRepository.save(entity);
+        var dto  = teacherMapper.toDto(updateEntity);
+        return dto;
     }
 
     @Override
     public TeacherResponse deleteTeacherById(Long id) {
-        return null;
+        var entity = teacherRepository.findById(id).orElseThrow();
+        entity.setDeletedAt(LocalDateTime.now());
+        var dto = teacherMapper.toDto(entity);
+        teacherRepository.save(entity);
+        return dto;
     }
 }
