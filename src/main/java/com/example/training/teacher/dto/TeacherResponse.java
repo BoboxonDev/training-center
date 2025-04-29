@@ -3,9 +3,12 @@ package com.example.training.teacher.dto;
 
 import com.example.training.group.dto.GroupResponse;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TeacherResponse {
 
     private Long id;

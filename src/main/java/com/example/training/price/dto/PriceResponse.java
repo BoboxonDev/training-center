@@ -6,9 +6,12 @@ import com.example.training.teacher.dto.TeacherResponse;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PriceResponse {
 
     private Long id;

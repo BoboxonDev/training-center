@@ -2,15 +2,17 @@ package com.example.training.price;
 
 import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "prices")
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PriceEntity {
 
     @Id
@@ -20,9 +22,7 @@ public class PriceEntity {
     @Column(name = "amount")
     private Integer amount;
 
-    public PriceEntity() {
 
-    }
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

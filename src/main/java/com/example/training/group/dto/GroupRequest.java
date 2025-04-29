@@ -1,11 +1,14 @@
 package com.example.training.group.dto;
 
 import com.example.training.teacher.dto.TeacherResponse;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class GroupRequest {
 
     private String groupName;

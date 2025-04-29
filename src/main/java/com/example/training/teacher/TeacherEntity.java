@@ -2,15 +2,17 @@ package com.example.training.teacher;
 
 import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "teachers")
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TeacherEntity {
 
     @Id
@@ -36,7 +38,5 @@ public class TeacherEntity {
     @JoinColumn(name = "group_id")
     private GroupEntity group;
 
-    public TeacherEntity() {
 
-    }
 }

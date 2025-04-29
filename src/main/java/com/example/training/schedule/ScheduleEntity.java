@@ -3,8 +3,7 @@ package com.example.training.schedule;
 
 import com.example.training.group.GroupEntity;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -13,7 +12,10 @@ import java.time.LocalTime;
 @Entity
 @Table(name = "schedules")
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleEntity {
 
     @Id
@@ -29,9 +31,7 @@ public class ScheduleEntity {
     @Column(name = "endTime")
     private LocalTime endTime;
 
-    public ScheduleEntity() {
 
-    }
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

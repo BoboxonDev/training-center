@@ -1,8 +1,7 @@
 package com.example.training.group;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +9,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name  = "groups")
 @Builder
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class GroupEntity {
 
     @Id
@@ -20,8 +22,6 @@ public class GroupEntity {
     @Column(name = "groupName")
     private String groupName;
 
-    public GroupEntity() {
-    }
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

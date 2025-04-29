@@ -5,13 +5,15 @@ import com.example.training.price.dto.PriceResponse;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleResponse {
 
     private Long id;

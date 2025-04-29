@@ -1,7 +1,6 @@
 package com.example.training.price;
 
 
-import com.example.training.group.dto.GroupResponse;
 import com.example.training.price.dto.PriceRequest;
 import com.example.training.price.dto.PriceResponse;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class PriceController {
     ResponseEntity<List<PriceResponse>> getAllPrice() {return ResponseEntity.ok(priceService.getAll());}
 
     @GetMapping("{id}")
-    ResponseEntity<GroupResponse> getById(@PathVariable Long id) {return ResponseEntity.ok(priceService.getById(id));}
+    ResponseEntity<PriceResponse> getById(@PathVariable Long id) {return ResponseEntity.ok(priceService.getById(id));}
 
     @PutMapping("{id}")
     ResponseEntity<Void> update(@RequestBody PriceRequest request, @PathVariable Long id){
